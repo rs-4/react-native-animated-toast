@@ -1,5 +1,5 @@
 import {
-  useNotif,
+  useNotif as useNotificationHook,
   NotificationProvider,
   useStatusBarVisibility,
   useStatusBarStore,
@@ -38,9 +38,11 @@ import DynamicIslandNotificationComponent from './library/DynamicIslandNotificat
 import NotchNotificationComponent from './library/NotchNotification';
 import ToastNotificationComponent from './library/ToastNotification';
 
+// Create a version of the hook that uses our exported NotificationOptions
+export const useNotif = useNotificationHook;
+
 // Re-export hooks and components
 export {
-  useNotif,
   NotificationProvider,
   useStatusBarVisibility,
   useStatusBarStore,
@@ -63,8 +65,20 @@ export const ToastNotification = ToastNotificationComponent;
 // Legacy export
 export const notif = useNotif;
 
+// Define a type for our default export to avoid TS errors
+interface DefaultExport {
+  Provider: typeof NotificationProvider;
+  useNotification: typeof useNotif;
+  notif: typeof useNotif;
+  useNotif: typeof useNotif;
+  useStatusBarVisibility: typeof useStatusBarVisibility;
+  DynamicIslandNotification: typeof DynamicIslandNotificationComponent;
+  NotchNotification: typeof NotchNotificationComponent;
+  ToastNotification: typeof ToastNotificationComponent;
+}
+
 // Default export with named methods for CommonJS compatibility
-export default {
+const defaultExport: DefaultExport = {
   // Main components
   Provider: NotificationProvider,
   useNotification: useNotif,
@@ -79,3 +93,5 @@ export default {
   NotchNotification: NotchNotificationComponent,
   ToastNotification: ToastNotificationComponent,
 };
+
+export default defaultExport;
