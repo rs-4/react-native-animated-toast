@@ -1,11 +1,81 @@
-import { useNotif, NotificationProvider } from './library/index';
+import {
+  useNotif,
+  NotificationProvider,
+  useStatusBarVisibility,
+  useStatusBarStore,
+  hasDynamicIsland,
+} from './library/index';
 
-export * from './library/index';
-export { default as DynamicIslandNotification } from './library/DynamicIslandNotifications';
-export { default as NotchNotification } from './library/NotchNotification';
-export { default as ToastNotification } from './library/ToastNotification';
+import type {
+  NotificationProps,
+  NotificationRef,
+  NotificationStyle,
+  NotificationShowOptions,
+} from './library/index';
 
+// Define NotificationOptions since it's not exported as an interface from library/index.tsx
+export interface NotificationOptions {
+  /** Custom text color */
+  textColor?: string;
+  /** Whether to show shadow effect */
+  showShadow?: boolean;
+  /** Custom shadow color */
+  shadowColor?: string;
+  /** Custom border color */
+  borderColor?: string;
+  /** Custom auto-hide delay in milliseconds */
+  autoHideDelay?: number;
+  /** Disable auto-hiding the notification */
+  disableAutoHide?: boolean;
+  /** Enable haptic feedback */
+  enableHaptics?: boolean;
+  /** Force a specific notification style */
+  forceStyle?: 'dynamicIsland' | 'notch' | 'toast';
+}
+
+// Import individual components
+import DynamicIslandNotificationComponent from './library/DynamicIslandNotifications';
+import NotchNotificationComponent from './library/NotchNotification';
+import ToastNotificationComponent from './library/ToastNotification';
+
+// Re-export hooks and components
+export {
+  useNotif,
+  NotificationProvider,
+  useStatusBarVisibility,
+  useStatusBarStore,
+  hasDynamicIsland,
+};
+
+// Re-export types
+export type {
+  NotificationProps,
+  NotificationRef,
+  NotificationStyle,
+  NotificationShowOptions,
+};
+
+// Re-export individual components
+export const DynamicIslandNotification = DynamicIslandNotificationComponent;
+export const NotchNotification = NotchNotificationComponent;
+export const ToastNotification = ToastNotificationComponent;
+
+// Legacy export
+export const notif = useNotif;
+
+// Default export with named methods for CommonJS compatibility
 export default {
+  // Main components
   Provider: NotificationProvider,
   useNotification: useNotif,
+  notif: useNotif,
+  useNotif,
+
+  // Status bar utilities
+  useStatusBarVisibility,
+
+  // Individual components for specific use cases
+  DynamicIslandNotification: DynamicIslandNotificationComponent,
+  NotchNotification: NotchNotificationComponent,
+  ToastNotification: ToastNotificationComponent,
 };
