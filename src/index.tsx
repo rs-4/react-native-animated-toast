@@ -1,5 +1,5 @@
 import {
-  useNotif as useNotificationHook,
+  useNotif,
   NotificationProvider,
   useStatusBarVisibility,
   useStatusBarStore,
@@ -37,9 +37,6 @@ export interface NotificationOptions {
 import DynamicIslandNotificationComponent from './library/DynamicIslandNotifications';
 import NotchNotificationComponent from './library/NotchNotification';
 import ToastNotificationComponent from './library/ToastNotification';
-
-// Create a version of the hook that uses our exported NotificationOptions
-export const useNotif = useNotificationHook;
 
 // Re-export hooks and components
 export {
