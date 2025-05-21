@@ -59,14 +59,10 @@ export const DynamicIslandNotification = DynamicIslandNotificationComponent;
 export const NotchNotification = NotchNotificationComponent;
 export const ToastNotification = ToastNotificationComponent;
 
-// Legacy export
-export const notif = useNotif;
-
 // Define a type for our default export to avoid TS errors
 interface DefaultExport {
   Provider: typeof NotificationProvider;
   useNotification: typeof useNotif;
-  notif: typeof useNotif;
   useNotif: typeof useNotif;
   useStatusBarVisibility: typeof useStatusBarVisibility;
   DynamicIslandNotification: typeof DynamicIslandNotificationComponent;
@@ -79,7 +75,6 @@ const defaultExport: DefaultExport = {
   // Main components
   Provider: NotificationProvider,
   useNotification: useNotif,
-  notif: useNotif,
   useNotif,
 
   // Status bar utilities
