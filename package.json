@@ -1,5 +1,5 @@
 {
-  "name": "react-native-animated-toast",
+  "name": "react-native-toast-dynamic",
   "version": "0.1.0",
   "description": "dynamicIsland notifications for IOS only",
   "main": "./lib/module/index.js",
@@ -55,14 +55,14 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/rs-4/react-native-animated-toast.git"
+    "url": "git+https://github.com/rs-4/react-native-toast-dynamic.git"
   },
   "author": "rs4 <rayanselmi100@gmail.com> (https://github.com/rs-4)",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/rs-4/react-native-animated-toast/issues"
+    "url": "https://github.com/rs-4/react-native-toast-dynamic/issues"
   },
-  "homepage": "https://github.com/rs-4/react-native-animated-toast#readme",
+  "homepage": "https://github.com/rs-4/react-native-toast-dynamic#readme",
   "publishConfig": {
     "registry": "https://registry.npmjs.org/"
   },
